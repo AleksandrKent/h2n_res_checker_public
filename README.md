@@ -25,8 +25,8 @@ Examples:
 Run CMD.exe with administrative privileges. Then change current dir to one with .exe
 
 ```
-# change current dir in CMD 
-cd C:\Users\Kent\Downloads
+# change current dir in CMD. Specify directory path where .exe is placed.
+cd "C:\Users\Kent\Downloads"
 ```
 
 ```
