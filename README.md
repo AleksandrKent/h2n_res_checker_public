@@ -62,7 +62,7 @@ If you are interested in more details about the issue, follow
 ## Script results
 
 The script scan all nested folders starting from the root folder recursively. During the scan
-several things are checked.
+several things are checked. All results are saved in .txt files in the same folder with h2n_res_checker.exe
 
 There is stat files examples for every issue, so you can download them and check the issue by yourself.
 
