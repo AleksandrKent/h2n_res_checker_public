@@ -17,19 +17,19 @@ The resource files are located in `H2N/Config`. Their extensions:
 ## Usage
 
 ```
-python main.py -s [SOURCE_PATH] [-l]
+h2n_res_checker.exe -s [SOURCE_PATH] [-l]
 ```
 
 Examples:
 
 ```
 # Check all unlocked files
-python main.py -s "C:\Users\Kent\h2n_res_checker\tests"
+h2n_res_checker.exe -s "C:\Users\Kent\h2n_res_checker\tests"
 ```
 
 ```
 # Check both unlocked and locked files.
-python main.py -l -s "C:\Users\Kent\h2n_res_checker\tests"
+h2n_res_checker.exe -l -s "C:\Users\Kent\h2n_res_checker\tests"
 ```
 
 ## Options
