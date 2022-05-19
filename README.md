@@ -16,6 +16,13 @@ The resource files are located in `H2N/Config`. Their extensions:
 
 ## Usage
 
+Run CMD.exe with administrative privileges. Then change current dir to one with .exe
+
+```
+# change current dir in CMD 
+cd C:\Users\Kent\Downloads
+```
+
 ```
 h2n_res_checker.exe -s [SOURCE_PATH] [-l]
 ```
