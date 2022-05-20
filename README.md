@@ -13,21 +13,32 @@ The resource files are located in `H2N/Config`. Their extensions:
 - [x] .filter2
 - [x] .filter2l
 
+## Motivation
+Resource files may conflict with each other causing side effects. Like loss of edited stats, HUDS, etc.
 
-## Usage
+Often this could happen when you import stat files from external source.
+They may have same name or even same IDs with those that are already in your `Config` folder.
+The latter will cause missing of random files while working with H2N. 
+
+If you are interested in more details about the issue, follow
+[this link](./docs/problem_descr.md).
+
+## How to use
+
+You can run script directly as any other .exe or by CMD.
+
+### 1. Directly run .exe
+
+You will be prompted to enter directory path and whether locked filters
+should be scanned.
+
+### 2. CMD
 
 ```
-h2n_res_checker.exe -s [SOURCE_PATH] [-l]
+h2n_res_checker.exe [-h] [-s [SOURCE_PATH]] [-l]
 ```
 
-Examples:
-
-Run CMD.exe with administrative privileges. Then change current dir to one with .exe
-
-```
-# change current dir in CMD. Specify directory path where .exe is placed.
-cd "C:\Users\Kent\Downloads"
-```
+#### Examples:
 
 ```
 # Check all unlocked files
@@ -39,7 +50,7 @@ h2n_res_checker.exe -s "C:\Users\Kent\h2n_res_checker\tests"
 h2n_res_checker.exe -l -s "C:\Users\Kent\h2n_res_checker\tests"
 ```
 
-## Options
+#### Options
 ```
 -h, --help       Print this help text and exit.
 
@@ -49,20 +60,10 @@ h2n_res_checker.exe -l -s "C:\Users\Kent\h2n_res_checker\tests"
                  Otherwise locked files won't be scanned.
 ```
 
-## Motivation
-Resource files may conflict with each other causing side effects. Like loss of edited stats, HUDS, etc.
-
-Often this could happen when you import stat files from external source.
-They may have same name or even same IDs with those that are already in your `Config` folder.
-The latter will cause missing of random files while working with H2N. 
-
-If you are interested in more details about the issue, follow
-[this link](./docs/problem_descr.md).
-
 ## Script results
 
 The script scan all nested folders starting from the root folder recursively. During the scan
-several things are checked. All results are saved in .txt files in the same folder with h2n_res_checker.exe
+several things are checked.
 
 There is stat files examples for every issue, so you can download them and check the issue by yourself.
 
@@ -70,28 +71,6 @@ Few levels of the importance of the issue are used below:
 - Critical (it's highly recommended taking actions on that)
 - Warning (can be ignored, but tends to create Critical issues in further)
 - Unwilling (can be ignored)
-
-### Name discrepancy
-
-> **Status:** Unwilling
-
-Stat name from file content differs from stat name in the filename (numbers in brackets).
-
-This may lead to some confusion when you will look at the names in H2N and in Windows explorer.
-
-[Stats example](./tests/test_files/test_unlocked/name_discrepancy).
-
-### Hash discrepancy
-
-> **Status:** Unwilling
-
-ID from file content differs from ID in the filename (numbers in brackets).
-
-It will be hard to detect other problems if you lock files.
-Because all data is encrypted in lock files, and we can only rely on assumption that 
-data in the filename matches internal data of that file.
-
-[Stats example](./tests/test_files/test_unlocked/hash_discrepancy).
 
 ### Resource id is same but data differs
 
@@ -130,3 +109,25 @@ But from my experience this may be confusing, and it's better to work with stats
 So it's handy to check such cases.
 
 [Stats example](./tests/test_files/test_unlocked/hash_diff_name_same).
+
+### Name discrepancy
+
+> **Status:** Unwilling
+
+Stat name from file content differs from stat name in the filename (numbers in brackets).
+
+This may lead to some confusion when you will look at the names in H2N and in Windows explorer.
+
+[Stats example](./tests/test_files/test_unlocked/name_discrepancy).
+
+### Hash discrepancy
+
+> **Status:** Unwilling
+
+ID from file content differs from ID in the filename (numbers in brackets).
+
+It will be hard to detect other problems if you lock files.
+Because all data is encrypted in lock files, and we can only rely on assumption that 
+data in the filename matches internal data of that file.
+
+[Stats example](./tests/test_files/test_unlocked/hash_discrepancy).
