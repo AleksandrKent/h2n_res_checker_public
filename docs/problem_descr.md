@@ -1,6 +1,12 @@
 # H2N issue — ID collision
 
-## Briefly about H2N resource files
+## TLDR
+
+If there are 2 or more resource files with same ID than H2N imports only one of them arbitrarily.
+Other are ignored without notification.
+They may be even silently deleted during H2N session.
+
+## About H2N resource files
 Resource files can be in any format as those presented in sub-dirs of `H2N/Config` folder.
 Such as `.filter2, .filter2l, .fgroup2, .badge, .exst` and others.
 
@@ -24,13 +30,15 @@ If the file is locked we can't easily decrypt data inside the file.
 The only way to check consistency of the data from locked files is the assumption
 about the identical match of names and IDs in the filename and file content.
 
-## Hash collision
+## Root of the problem: hash collision
 
 Hash collision, to put it simply, is when identification numbers are the same for different objects.
-Suppose we got `VPIP[-904665471].filter2l` and `PRF[-904665471].filter2l`.
-Their ID **-904665471** is the same. Thus, H2N will see only one of these files.
 
-## Some math
+Suppose we got `VPIP[-904665471].filter2l` and `PRF[-904665471].filter2l`.
+Their ID **-904665471** is the same. Thus, H2N will use only one of such files arbitrarily without notification. 
+Other will be ignored or even deleted.
+
+## Issue significance
 Resource files in H2N have ID as an integer numbers ranging from -2 147 483 648 to 2 147 483 647.
 Total of 4 294 967 296 numbers. Pretty much for hundreds of thousands of files to be unique, yeah?
 
@@ -43,7 +51,7 @@ Then we got `0.99998835^30000 ~ 0.705`. There is a 30% probability that collisio
 The latter means that H2N will discard some
 files without any warnings.
 
-## Side-effects
+## Other H2N side effects
 
 The worst thing is that files with same ID are placed in one folder. 
 Then, H2N will see during the session only one of that files. 
