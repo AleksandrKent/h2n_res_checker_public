@@ -1,5 +1,5 @@
 # h2n_res_checker
-The script checks the consistency of the data in resource files of H2N. 
+**h2n_res_checker** checks the consistency of the data in resource files of H2N (Hand2Note). 
 
 The resource files are located in `H2N/Config`. Their extensions:
 - .filter2 — stat
